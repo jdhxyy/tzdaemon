@@ -48,6 +48,7 @@ static int checkTimeout(void);
 static TZListNode* createNode(void);
 
 // TZDaemonLoad 模块载入
+// 喂狗函数feed可以为NULL,表示不需要喂狗
 bool TZDaemonLoad(TZEmptyFunc reboot, TZEmptyFunc feed) {
     mid = TZMallocRegister(0, TAG, MALLOC_TOTAL);
     if (mid == -1) {

@@ -12,6 +12,7 @@
 #define TZDAEMON_FEED_DOG_INTERVAL 500
 
 // TZDaemonLoad 模块载入
+// 喂狗函数feed可以为NULL,表示不需要喂狗
 bool TZDaemonLoad(TZEmptyFunc reboot, TZEmptyFunc feed);
 
 // TZDaemonMonitorTimeout 监控超时
