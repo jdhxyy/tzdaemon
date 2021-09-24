@@ -1,5 +1,6 @@
-// Copyright 2019-2020 The TZIOT Authors. All rights reserved.
-// 守护模块头文件
+// Copyright 2019-2021 The jdh99 Authors. All rights reserved.
+// 守护模块
+// Authors: jdh99 <jdh821@163.com>
 
 #ifndef TZDAEMON_H
 #define TZDAEMON_H
