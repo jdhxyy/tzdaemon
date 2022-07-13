@@ -170,8 +170,6 @@ void TZDaemonUpdateTime(intptr_t handle) {
     if (item->mode != MONITOR_MODE_TIMEOUT) {
         return;
     }
-
-    LD(TAG, "%s update time", item->tag);
     item->timeStart = TZTimeGet();
 }
 
