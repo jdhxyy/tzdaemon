@@ -1,5 +1,5 @@
 // Copyright 2019-2021 The jdh99 Authors. All rights reserved.
-// ÊØ»¤Ä£¿é
+// å®ˆæŠ¤æ¨¡å—
 // Authors: jdh99 <jdh821@163.com>
 
 #ifndef TZDAEMON_H
@@ -7,32 +7,32 @@
 
 #include "tztype.h"
 
-// ±êÇ©×î´ó×Ö½ÚÊı
+// æ ‡ç­¾æœ€å¤§å­—èŠ‚æ•°
 #define TZDAEMON_TAG_SIZE_MAX 32
-// Î¹¹·¼ä¸ô.µ¥Î»:ms
+// å–‚ç‹—é—´éš”.å•ä½:ms
 #define TZDAEMON_FEED_DOG_INTERVAL 500
 
-// TZDaemonLoad Ä£¿éÔØÈë
-// Î¹¹·º¯Êıfeed¿ÉÒÔÎªNULL,±íÊ¾²»ĞèÒªÎ¹¹·
+// TZDaemonLoad æ¨¡å—è½½å…¥
+// å–‚ç‹—å‡½æ•°feedå¯ä»¥ä¸ºNULL,è¡¨ç¤ºä¸éœ€è¦å–‚ç‹—
 bool TZDaemonLoad(TZEmptyFunc reboot, TZEmptyFunc feed);
 
-// TZDaemonMonitorTimeout ¼à¿Ø³¬Ê±
-// ³¬Ê±Ê±¼äµ¥Î»ÊÇus
-// ·µ»Ø¾ä±ú.Èç¹ûÊÇ0,±íÊ¾Ôö¼Ó¼à¿ØÏîÊ§°Ü
+// TZDaemonMonitorTimeout ç›‘æ§è¶…æ—¶
+// è¶…æ—¶æ—¶é—´å•ä½æ˜¯us
+// è¿”å›å¥æŸ„.å¦‚æœæ˜¯0,è¡¨ç¤ºå¢åŠ ç›‘æ§é¡¹å¤±è´¥
 intptr_t TZDaemonMonitorTimeout(const char* tag, uint64_t timeout);
 
-// TZDaemonUpdateTime ¸üĞÂÊ±¼ä
+// TZDaemonUpdateTime æ›´æ–°æ—¶é—´
 void TZDaemonUpdateTime(intptr_t handle);
 
-// TZDaemonMonitorRetryCount ¼à¿ØÖØ´«´ÎÊı
-// ×¢Òâ:ÖØ´«´ÎÊıµÈÓÚ×î´ó´ÎÊı»áµ¼ÖÂ¸´Î»
-// ·µ»Ø¾ä±ú.Èç¹ûÊÇ0,±íÊ¾Ôö¼Ó¼à¿ØÏîÊ§°Ü
+// TZDaemonMonitorRetryCount ç›‘æ§é‡ä¼ æ¬¡æ•°
+// æ³¨æ„:é‡ä¼ æ¬¡æ•°ç­‰äºæœ€å¤§æ¬¡æ•°ä¼šå¯¼è‡´å¤ä½
+// è¿”å›å¥æŸ„.å¦‚æœæ˜¯0,è¡¨ç¤ºå¢åŠ ç›‘æ§é¡¹å¤±è´¥
 intptr_t TZDaemonMonitorRetryCount(const char* tag, int count);
 
-// TZDaemonAddRetryCount ÖØ´«´ÎÊı×ÔÔö
+// TZDaemonAddRetryCount é‡ä¼ æ¬¡æ•°è‡ªå¢
 void TZDaemonAddRetryNum(intptr_t handle);
 
-// TZDaemonClearRetryNum Çå³ıÖØ´«´ÎÊı
+// TZDaemonClearRetryNum æ¸…é™¤é‡ä¼ æ¬¡æ•°
 void TZDaemonClearRetryNum(intptr_t handle);
 
 #endif

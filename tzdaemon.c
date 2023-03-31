@@ -1,5 +1,5 @@
 // Copyright 2019-2021 The jdh99 Authors. All rights reserved.
-// ÊØ»¤Ä£¿é
+// å®ˆæŠ¤æ¨¡å—
 // Authors: jdh99 <jdh821@163.com>
 
 #include "tzdaemon.h"
@@ -13,10 +13,10 @@
 
 #define TAG "tzdaemon"
 
-// tzmalloc×Ö½ÚÊı
+// tzmallocå­—èŠ‚æ•°
 #define MALLOC_TOTAL 4096
 
-// ¼ì²é³¬Ê±¼ä¸ô.µ¥Î»:ms
+// æ£€æŸ¥è¶…æ—¶é—´éš”.å•ä½:ms
 #define CHECK_TIMEOUT_INTERVAL 100
 
 #define MONITOR_MODE_TIMEOUT 0
@@ -24,7 +24,7 @@
 
 #pragma pack(1)
 
-// tItem ¼à¿Ø¾ä±ú
+// tItem ç›‘æ§å¥æŸ„
 typedef struct {
     char tag[TZDAEMON_TAG_SIZE_MAX + 1];
     int mode;
@@ -38,7 +38,7 @@ typedef struct {
 
 static int mid = -1;
 
-// ´æ´¢¼à¿ØÁĞ±í
+// å­˜å‚¨ç›‘æ§åˆ—è¡¨
 static intptr_t list = 0;
 
 static TZEmptyFunc gReboot = NULL;
@@ -48,8 +48,8 @@ static int feedDog(void);
 static int checkTimeout(void);
 static TZListNode* createNode(void);
 
-// TZDaemonLoad Ä£¿éÔØÈë
-// Î¹¹·º¯Êıfeed¿ÉÒÔÎªNULL,±íÊ¾²»ĞèÒªÎ¹¹·
+// TZDaemonLoad æ¨¡å—è½½å…¥
+// å–‚ç‹—å‡½æ•°feedå¯ä»¥ä¸ºNULL,è¡¨ç¤ºä¸éœ€è¦å–‚ç‹—
 bool TZDaemonLoad(TZEmptyFunc reboot, TZEmptyFunc feed) {
     mid = TZMallocRegister(0, TAG, MALLOC_TOTAL);
     if (mid == -1) {
@@ -123,9 +123,9 @@ static int checkTimeout(void) {
     PT_END(&pt);
 }
 
-// TZDaemonMonitorTimeout ¼à¿Ø³¬Ê±
-// ³¬Ê±Ê±¼äµ¥Î»ÊÇus
-// ·µ»Ø¾ä±ú.Èç¹ûÊÇ0,±íÊ¾Ôö¼Ó¼à¿ØÏîÊ§°Ü
+// TZDaemonMonitorTimeout ç›‘æ§è¶…æ—¶
+// è¶…æ—¶æ—¶é—´å•ä½æ˜¯us
+// è¿”å›å¥æŸ„.å¦‚æœæ˜¯0,è¡¨ç¤ºå¢åŠ ç›‘æ§é¡¹å¤±è´¥
 intptr_t TZDaemonMonitorTimeout(const char* tag, uint64_t timeout) {
     if (strlen(tag) > TZDAEMON_TAG_SIZE_MAX) {
         LE(TAG, "add monitor timeout failed!tag is too long:%d", strlen(tag));
@@ -161,7 +161,7 @@ static TZListNode* createNode(void) {
     return node;
 }
 
-// TZDaemonUpdateTime ¸üĞÂÊ±¼ä
+// TZDaemonUpdateTime æ›´æ–°æ—¶é—´
 void TZDaemonUpdateTime(intptr_t handle) {
     if (handle == 0) {
         return;
@@ -173,9 +173,9 @@ void TZDaemonUpdateTime(intptr_t handle) {
     item->timeStart = TZTimeGet();
 }
 
-// TZDaemonMonitorRetryCount ¼à¿ØÖØ´«´ÎÊı
-// ×¢Òâ:ÖØ´«´ÎÊıµÈÓÚ×î´ó´ÎÊı»áµ¼ÖÂ¸´Î»
-// ·µ»Ø¾ä±ú.Èç¹ûÊÇ0,±íÊ¾Ôö¼Ó¼à¿ØÏîÊ§°Ü
+// TZDaemonMonitorRetryCount ç›‘æ§é‡ä¼ æ¬¡æ•°
+// æ³¨æ„:é‡ä¼ æ¬¡æ•°ç­‰äºæœ€å¤§æ¬¡æ•°ä¼šå¯¼è‡´å¤ä½
+// è¿”å›å¥æŸ„.å¦‚æœæ˜¯0,è¡¨ç¤ºå¢åŠ ç›‘æ§é¡¹å¤±è´¥
 intptr_t TZDaemonMonitorRetryCount(const char* tag, int count) {
     if (strlen(tag) > TZDAEMON_TAG_SIZE_MAX) {
         LE(TAG, "add monitor retry count failed!tag is too long:%d", strlen(tag));
@@ -198,7 +198,7 @@ intptr_t TZDaemonMonitorRetryCount(const char* tag, int count) {
     return (intptr_t)item;
 }
 
-// TZDaemonAddRetryCount ÖØ´«´ÎÊı×ÔÔö
+// TZDaemonAddRetryCount é‡ä¼ æ¬¡æ•°è‡ªå¢
 void TZDaemonAddRetryNum(intptr_t handle) {
     if (handle == 0) {
         return;
@@ -216,7 +216,7 @@ void TZDaemonAddRetryNum(intptr_t handle) {
     }
 }
 
-// TZDaemonClearRetryNum Çå³ıÖØ´«´ÎÊı
+// TZDaemonClearRetryNum æ¸…é™¤é‡ä¼ æ¬¡æ•°
 void TZDaemonClearRetryNum(intptr_t handle) {
     if (handle == 0) {
         return;
