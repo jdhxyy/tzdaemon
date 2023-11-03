@@ -43,6 +43,7 @@ static intptr_t list = 0;
 
 static TZEmptyFunc gReboot = NULL;
 static TZEmptyFunc gFeed = NULL;
+static bool gIsEnable = true;
 
 static int feedDog(void);
 static int checkTimeout(void);
@@ -96,7 +97,7 @@ static int checkTimeout(void) {
 
     PT_BEGIN(&pt);
 
-    PT_WAIT_UNTIL(&pt, gReboot != NULL);
+    PT_WAIT_UNTIL(&pt, gReboot != NULL && gIsEnable == true);
 
     timeNow = TZTimeGet();
     node = TZListGetHeader(list);
@@ -228,4 +229,9 @@ void TZDaemonClearRetryNum(intptr_t handle) {
 
     LD(TAG, "%s clear retry num", item->tag);
     item->retry = 0;
+}
+
+// TZDaemonEnable 使能.如果禁止则不会复位
+void TZDaemonEnable(bool enable) {
+    gIsEnable = enable;
 }

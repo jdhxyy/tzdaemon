@@ -35,4 +35,7 @@ void TZDaemonAddRetryNum(intptr_t handle);
 // TZDaemonClearRetryNum 清除重传次数
 void TZDaemonClearRetryNum(intptr_t handle);
 
+// TZDaemonEnable 使能.如果禁止则不会复位
+void TZDaemonEnable(bool enable);
+
 #endif
